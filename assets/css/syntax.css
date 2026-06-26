@@ -1,0 +1,129 @@
+/* ============================================
+   syntax.css — pytgion.github.io
+   Theme-aware Syntax Highlighting (Gruvbox)
+   ============================================ */
+
+:root {
+  /* Gruvbox Light Palette variables */
+  --syn-bg: #fbf1c7;
+  --syn-fg: #3c3836;
+  --syn-comment: #928374;
+  --syn-red: #9d0006;
+  --syn-green: #79740e;
+  --syn-yellow: #b57614;
+  --syn-blue: #076678;
+  --syn-purple: #8f3f71;
+  --syn-aqua: #427b58;
+  --syn-orange: #af3a03;
+}
+
+[data-theme="dark"] {
+  /* Gruvbox Dark Palette variables */
+  --syn-bg: #282828;
+  --syn-fg: #fbf1c7;
+  --syn-comment: #928374;
+  --syn-red: #fb4934;
+  --syn-green: #b8bb26;
+  --syn-yellow: #fabd2f;
+  --syn-blue: #83a598;
+  --syn-purple: #d3869b;
+  --syn-aqua: #8ec07c;
+  --syn-orange: #fe8019;
+}
+
+/* ── Highlighting Rules ── */
+.highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+
+.highlight, .highlight .w {
+  color: var(--syn-fg);
+  background-color: transparent; /* Allows main.css code block backgrounds to take over naturally */
+}
+.highlight .err {
+  color: var(--syn-red);
+  font-weight: bold;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: var(--syn-comment);
+  font-style: italic;
+}
+.highlight .cp {
+  color: var(--syn-aqua);
+}
+.highlight .nt {
+  color: var(--syn-red);
+}
+.highlight .o, .highlight .ow {
+  color: var(--syn-fg);
+}
+.highlight .p, .highlight .pi {
+  color: var(--syn-fg);
+}
+.highlight .gi {
+  color: var(--syn-green);
+}
+.highlight .gd {
+  color: var(--syn-red);
+}
+.highlight .gh {
+  color: var(--syn-green);
+  font-weight: bold;
+}
+.highlight .ge {
+  font-style: italic;
+}
+.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .gs {
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: var(--syn-red);
+}
+.highlight .kc {
+  color: var(--syn-purple);
+}
+.highlight .kt {
+  color: var(--syn-yellow);
+}
+.highlight .kd {
+  color: var(--syn-orange);
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: var(--syn-green);
+  font-style: italic;
+}
+.highlight .si {
+  color: var(--syn-green);
+  font-style: italic;
+}
+.highlight .sr {
+  color: var(--syn-green);
+  font-style: italic;
+}
+.highlight .sa {
+  color: var(--syn-red);
+}
+.highlight .se {
+  color: var(--syn-orange);
+}
+.highlight .nn {
+  color: var(--syn-aqua);
+}
+.highlight .nc {
+  color: var(--syn-aqua);
+}
+.highlight .no {
+  color: var(--syn-purple);
+}
+.highlight .na {
+  color: var(--syn-green);
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: var(--syn-purple);
+}
+.highlight .ss {
+  color: var(--syn-blue);
+}

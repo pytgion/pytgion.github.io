@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<main class="article-container">
+  <div class="article">
+    <header class="article-header">
+      <h1 class="article-title">{{ page.title }}</h1>
+      {% if page.description %}<p class="article-date">{{ page.description }}</p>{% endif %}
+    </header>
+    {% assign category = page.category %}
+    {% assign posts = site.posts | where: "category", category %}
+    {% if posts.size > 0 %}
+      <ul class="post-list">
+        {% for post in posts %}
+        <li class="post-item">
+          <a href="{{ post.url | relative_url }}" class="post-title">{{ post.title }}</a>
+          <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+    {% endif %}
+  </div>
+</main>

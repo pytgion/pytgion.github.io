@@ -1,0 +1,58 @@
+---
+layout: default
+title: pytgion
+---
+
+<main class="home-grid">
+  <div class="main-column">
+    <section class="home-hero">
+      <p class="home-kicker">pytgion</p>
+
+      <h1>experimenting around game design and tooling.</h1>
+
+      <p class="home-lead">
+        devlogs and notes.
+      </p>
+    </section>
+
+    <section class="section-box">
+      <h2>latest writing</h2>
+
+      <ul class="post-list">
+        {% for post in site.posts limit:4 %}
+          <li class="post-item">
+            <a href="{{ post.url | relative_url }}" class="post-title">{{ post.title }}</a>
+            <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+
+  <aside class="sidebar">
+    <section class="section-box">
+      <h2>sections</h2>
+
+      <ul class="section-links">
+        <li>
+          <a href="{{ '/devlog/' | relative_url }}">
+            <span>devlogs</span>
+            <small>technical progress notes</small>
+          </a>
+        </li>
+        <li>
+          <a href="{{ '/project/' | relative_url }}">
+            <span>projects</span>
+            <small>tools and game work</small>
+          </a>
+        </li>
+        <li>
+          <a href="{{ '/diary/' | relative_url }}">
+            <span>diary</span>
+            <small>looser notes</small>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </aside>
+</main>

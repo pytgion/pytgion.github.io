@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>
+    (function () {
+      var savedTheme = "light";
+
+      try {
+        savedTheme = localStorage.getItem("theme") || savedTheme;
+      } catch (error) {
+        savedTheme = "light";
+      }
+
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title }} — pytgion</title>
+
+  <script src="https://kit.fontawesome.com/08a8158cb4.js" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;750&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/syntax.css' | relative_url }}" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="brand">
+        <a href="{{ '/' | relative_url }}" class="site-title">pytgion</a>
+      </div>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <div class="nav-item">
+          <button class="nav-button" type="button" aria-haspopup="true" aria-expanded="false">
+            archive
+          </button>
+
+          <div class="nav-menu" role="menu">
+            <a role="menuitem" href="{{ '/devlog/' | relative_url }}">devlogs</a>
+            <a role="menuitem" href="{{ '/project/' | relative_url }}">projects</a>
+            <a role="menuitem" href="{{ '/diary/' | relative_url }}">diary</a>
+          </div>
+        </div>
+
+        <a class="nav-link" href="{{ '/about.html' | relative_url }}">about</a>
+      </nav>
+
+      <div class="header-rail">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+          theme
+        </button>
+      </div>
+    </div>
+  </header>
+
+  {{ content }}
+
+  <footer>
+    <p>© pytgion</p>
+  </footer>
+
+  <script>
+    function setTheme(mode) {
+      var safeMode = mode === "dark" ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", safeMode);
+
+      try {
+        localStorage.setItem("theme", safeMode);
+      } catch (error) {
+        return;
+      }
+    }
+
+    function toggleTheme() {
+      var isDark = document.documentElement.getAttribute("data-theme") === "dark";
+      setTheme(isDark ? "light" : "dark");
+    }
+
+    function closeAllNavMenus() {
+      document.querySelectorAll(".nav-item").forEach(function (item) {
+        item.classList.remove("nav-open");
+
+        var button = item.querySelector(".nav-button");
+        if (button) {
+          button.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
+
+    var themeToggle = document.getElementById("theme-toggle");
+
+    if (themeToggle) {
+      themeToggle.addEventListener("click", toggleTheme);
+    }
+
+    document.querySelectorAll(".nav-button").forEach(function (button) {
+      button.addEventListener("click", function (event) {
+        event.stopPropagation();
+
+        var item = button.closest(".nav-item");
+        var wasOpen = item.classList.contains("nav-open");
+
+        closeAllNavMenus();
+
+        if (!wasOpen) {
+          item.classList.add("nav-open");
+          button.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!event.target.closest(".nav-item")) {
+        closeAllNavMenus();
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeAllNavMenus();
+      }
+    });
+  </script>
+</body>
+</html>
